@@ -1,0 +1,35 @@
+{
+  "important_informations": "very important informations",
+  "components": [
+    {
+      "tag": "div",
+      "props": {
+        "key": "div1"
+      }
+    },
+    {
+      "tag": "div",
+      "props": {
+        "key": "div2"
+      }
+    },
+    {
+      "tag": "div",
+      "props": {
+        "key": "div3"
+      }
+    },
+    {
+      "tag": "div",
+      "props": {
+        "key": "div4"
+      }
+    },
+    {
+      "tag": "div",
+      "props": {
+        "key": "div5"
+      }
+    }
+  ]
+}
