@@ -1,3 +1,4 @@
+import * as util from './utilities';
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -27,7 +28,7 @@ class Observed {
   }
 
   addObserver(observer) {
-    if (exists(observer)) {
+    if (util.exists(observer)) {
       if (Array.isArray(observer)) {
         observer.forEach(function (element) {
           this.addSingleObserver(element);
@@ -77,7 +78,7 @@ var requestCallback = function (error, response, body) {
     console.log('\tThe loaded JSON is of type ', (typeof body));
 
     console.log('\tI will check if observedObject does exist...');
-    if (exists(observedObject)) {
+    if (util.exists(observedObject)) {
       console.log('\t\tobservedObject does exist: ', observedObject);
       console.log('\t\tI am going to assign body to the observed property...');
       observedObject.observedProperty = body;
@@ -99,27 +100,16 @@ const path = 'json/app.json';
 /* Costruzione della richiesta HTTP. */
 const requestStr = scheme + '://' + domain + ':' + port + '/' + path;
 
-/* Utilities */
-const undefinedStr = 'undefined';
-
-function exists(obj) {
-  return typeof obj !== undefinedStr && obj !== null;
-}
-
-function objecOwnsPropertyWithName(obj, propertyName) {
-  return obj.hasOwnProperty(propertyName) && exists(obj[propertyName]);
-}
-
 class JSONComponent extends Component {
   constructor(props, json) {
     super(props);
 
-    if (exists(json)) {
-      if (objecOwnsPropertyWithName(json, 'props')) {
+    if (util.exists(json)) {
+      if (util.objecOwnsPropertyWithName(json, 'props')) {
 
       }
 
-      if (objecOwnsPropertyWithName(json, 'state')) {
+      if (util.objecOwnsPropertyWithName(json, 'state')) {
 
       }
     } else {
@@ -139,7 +129,7 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    if (exists(observedObject)) {
+    if (util.exists(observedObject)) {
       observedObject.addObserver(this);
     }
 
